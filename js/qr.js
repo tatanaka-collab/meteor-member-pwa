@@ -43,9 +43,8 @@ function loadCachedMemberInfo() {
     document.getElementById("memberNo").textContent = member.memberNo || memberId;
     document.getElementById("memberName").textContent = member.memberName || "会員様";
     document.getElementById("memberType").textContent = member.memberType || "会員";
-    document.getElementById("expiryDate").textContent = formatDate(member.expireDate);
 
-    setExpiryColor(member.expireDate);
+    setExpireDisplay(member.expireDate);
   } catch (e) {
     document.getElementById("memberNo").textContent = memberId;
   }
@@ -77,13 +76,63 @@ function loadMemberInfo() {
       document.getElementById("memberNo").textContent = cacheData.memberNo;
       document.getElementById("memberName").textContent = cacheData.memberName;
       document.getElementById("memberType").textContent = cacheData.memberType;
-      document.getElementById("expiryDate").textContent = formatDate(cacheData.expireDate);
 
-      setExpiryColor(cacheData.expireDate);
+      setExpireDisplay(cacheData.expireDate);
     })
     .catch(() => {
       loadCachedMemberInfo();
     });
+}
+
+function setExpireDisplay(value) {
+  const expiryElement = document.getElementById("expiryDate");
+
+  if (!expiryElement) return;
+
+  const formatted = formatDate(value);
+  const diffDays = getDiffDays(value);
+
+  expiryElement.classList.remove(
+    "expiry-safe",
+    "expiry-warning",
+    "expiry-danger",
+    "expiry-expired"
+  );
+
+  if (diffDays === null) {
+    expiryElement.textContent = formatted;
+    expiryElement.classList.add("expiry-safe");
+    return;
+  }
+
+  if (diffDays < 0) {
+    expiryElement.textContent = `期限切れ ${formatted}`;
+    expiryElement.classList.add("expiry-expired", "expiry-danger");
+    return;
+  }
+
+  expiryElement.textContent = formatted;
+
+  if (diffDays <= 7) {
+    expiryElement.classList.add("expiry-danger");
+  } else if (diffDays <= 30) {
+    expiryElement.classList.add("expiry-warning");
+  } else {
+    expiryElement.classList.add("expiry-safe");
+  }
+}
+
+function getDiffDays(value) {
+  if (!value) return null;
+
+  const date = new Date(value);
+  if (isNaN(date.getTime())) return null;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  date.setHours(0, 0, 0, 0);
+
+  return Math.ceil((date - today) / (1000 * 60 * 60 * 24));
 }
 
 function formatDate(value) {
@@ -101,34 +150,4 @@ function formatDate(value) {
   const day = String(date.getDate()).padStart(2, "0");
 
   return `${year}/${month}/${day}`;
-}
-
-function setExpiryColor(value) {
-  const expiryElement = document.getElementById("expiryDate");
-
-  expiryElement.classList.remove(
-    "expiry-safe",
-    "expiry-warning",
-    "expiry-danger"
-  );
-
-  const date = new Date(value);
-  if (isNaN(date.getTime())) {
-    expiryElement.classList.add("expiry-safe");
-    return;
-  }
-
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  date.setHours(0, 0, 0, 0);
-
-  const diffDays = Math.ceil((date - today) / (1000 * 60 * 60 * 24));
-
-  if (diffDays <= 7) {
-    expiryElement.classList.add("expiry-danger");
-  } else if (diffDays <= 30) {
-    expiryElement.classList.add("expiry-warning");
-  } else {
-    expiryElement.classList.add("expiry-safe");
-  }
 }

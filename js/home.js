@@ -44,10 +44,9 @@ function loadMemberInfo() {
 
       document.getElementById("memberName").textContent = result.name || "会員";
       document.getElementById("memberType").textContent = result.memberType || "-";
-      document.getElementById("expireDate").textContent = formatDate(result.expireDate);
       document.getElementById("pointBalance").textContent = formatPoint(result.points);
 
-      setExpireColor(result.expireDate);
+      setExpireDisplay(result.expireDate);
     })
     .catch(error => {
       console.error(error);
@@ -55,6 +54,56 @@ function loadMemberInfo() {
       document.getElementById("todayNews").textContent =
         "会員情報の取得に失敗しました。";
     });
+}
+
+function setExpireDisplay(value) {
+  const box = document.getElementById("expireInline");
+  const dateText = document.getElementById("expireDate");
+
+  if (!box || !dateText) return;
+
+  const formatted = formatDate(value);
+  const diffDays = getDiffDays(value);
+
+  box.classList.remove("warning", "danger", "expired");
+
+  if (diffDays === null) {
+    dateText.textContent = formatted;
+    return;
+  }
+
+  if (diffDays < 0) {
+    dateText.textContent = `期限切れ ${formatted}`;
+    box.classList.add("expired", "danger");
+
+    const news = document.getElementById("todayNews");
+    if (news) {
+      news.textContent = "会員期限が切れています。受付で更新手続きをお願いします。";
+    }
+
+    return;
+  }
+
+  dateText.textContent = formatted;
+
+  if (diffDays <= 7) {
+    box.classList.add("danger");
+  } else if (diffDays <= 30) {
+    box.classList.add("warning");
+  }
+}
+
+function getDiffDays(value) {
+  if (!value) return null;
+
+  const expire = new Date(value);
+  if (isNaN(expire.getTime())) return null;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  expire.setHours(0, 0, 0, 0);
+
+  return Math.ceil((expire - today) / (1000 * 60 * 60 * 24));
 }
 
 function formatDate(value) {
@@ -68,28 +117,6 @@ function formatDate(value) {
   const day = String(date.getDate()).padStart(2, "0");
 
   return `${year}/${month}/${day}`;
-}
-
-function setExpireColor(value) {
-  const box = document.getElementById("expireInline");
-  if (!box || !value) return;
-
-  const expire = new Date(value);
-  if (isNaN(expire.getTime())) return;
-
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  expire.setHours(0, 0, 0, 0);
-
-  const diffDays = Math.ceil((expire - today) / (1000 * 60 * 60 * 24));
-
-  box.classList.remove("warning", "danger");
-
-  if (diffDays <= 7) {
-    box.classList.add("danger");
-  } else if (diffDays <= 30) {
-    box.classList.add("warning");
-  }
 }
 
 function formatPoint(value) {
