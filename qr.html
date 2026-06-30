@@ -11,17 +11,18 @@
 
 <body>
   <main class="app">
+
     <header class="header">
-      <button class="back-btn" onclick="location.href='home.html'">‹</button>
-      <div class="logo-area">
-        <div class="logo-text">METEO</div>
-        <p>あなたのゴルフライフを、もっと楽しく。</p>
-      </div>
+      <button class="back-btn" onclick="location.href='home.html'">
+        <span>‹</span>
+      </button>
+
+      <img src="images/logo-horizontal.png" alt="METEO" class="logo-img" />
+      <p class="catch">あなたのゴルフライフを、もっと楽しく。</p>
     </header>
 
     <section class="title-section">
       <h1>QR会員証</h1>
-      <p>受付でこのQRコードをご提示ください。</p>
     </section>
 
     <section class="qr-card">
@@ -33,44 +34,57 @@
 
       <div class="member-info">
         <p class="label">会員番号</p>
-        <h2 id="memberNo">---</h2>
+        <h2 id="memberNo">----</h2>
 
-        <p class="name" id="memberName">---</p>
+        <p class="name" id="memberName">----</p>
 
         <div class="limit-box">
           <span>有効期限</span>
-          <strong id="expiryDate">----</strong>
+          <strong id="expiryDate">確認中</strong>
         </div>
       </div>
     </section>
 
     <section class="notice-card">
-      <strong>ご利用について</strong>
-      <p>QRコードは受付時の本人確認に使用します。画面を明るくしてご提示ください。</p>
+      <div class="notice-icon">
+        <span>👤</span>
+      </div>
+
+      <div class="notice-text">
+        <h2>受付でこのQRコードをご提示ください。</h2>
+        <div class="notice-line"></div>
+        <p>QRコードは受付時の本人確認に使用します。</p>
+        <p class="notice-strong">画面を明るくしてご提示ください。</p>
+      </div>
     </section>
 
     <nav class="bottom-nav">
-      <a href="home.html">
+      <button onclick="location.href='home.html'">
         <span>⌂</span>
         <small>ホーム</small>
-      </a>
-      <a href="qr.html" class="active">
+      </button>
+
+      <button class="active">
         <span>▦</span>
         <small>会員証</small>
-      </a>
-      <a href="point.html">
+      </button>
+
+      <button onclick="location.href='point.html'">
         <span>Ⓟ</span>
         <small>ポイント</small>
-      </a>
-      <a href="event.html">
+      </button>
+
+      <button onclick="location.href='event.html'">
         <span>▣</span>
         <small>イベント</small>
-      </a>
-      <a href="#">
+      </button>
+
+      <button>
         <span>…</span>
         <small>その他</small>
-      </a>
+      </button>
     </nav>
+
   </main>
 </body>
 </html>
