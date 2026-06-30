@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ポイント｜METEO</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
+  <link rel="stylesheet" href="css/point.css" />
+  <script src="js/point.js" defer></script>
+</head>
+
+<body>
+  <main class="app">
+
+    <header class="header">
+      <button class="back-btn" onclick="location.href='home.html'">
+        <span>‹</span>
+      </button>
+
+      <img src="images/logo-horizontal.png" alt="METEO" class="logo-img" />
+      <p class="catch">あなたのゴルフライフを、もっと楽しく。</p>
+    </header>
+
+    <section class="title-section">
+      <h1>ポイント</h1>
+    </section>
+
+    <section class="point-main-card">
+      <p>現在ポイント</p>
+      <h2><span id="currentPoint">---</span><small>pt</small></h2>
+    </section>
+
+    <section class="year-grid">
+      <div class="year-card">
+        <span class="material-symbols-rounded">add_circle</span>
+        <p>今年獲得ポイント</p>
+        <h3><span id="yearEarnedPoint">---</span><small>pt</small></h3>
+      </div>
+
+      <div class="year-card">
+        <span class="material-symbols-rounded">remove_circle</span>
+        <p>今年利用ポイント</p>
+        <h3><span id="yearUsedPoint">---</span><small>pt</small></h3>
+      </div>
+    </section>
+
+    <nav class="bottom-nav">
+      <button onclick="location.href='home.html'">
+        <span class="material-symbols-rounded">home</span>
+        <small>ホーム</small>
+      </button>
+
+      <button onclick="location.href='qr.html'">
+        <span class="material-symbols-rounded">qr_code_2</span>
+        <small>会員証</small>
+      </button>
+
+      <button class="active">
+        <span class="material-symbols-rounded">paid</span>
+        <small>ポイント</small>
+      </button>
+
+      <button onclick="location.href='event.html'">
+        <span class="material-symbols-rounded">event</span>
+        <small>イベント</small>
+      </button>
+
+      <button>
+        <span class="material-symbols-rounded">more_horiz</span>
+        <small>その他</small>
+      </button>
+    </nav>
+
+  </main>
+</body>
+</html>
