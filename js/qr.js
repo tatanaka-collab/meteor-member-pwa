@@ -33,28 +33,32 @@ function loadMemberInfo() {
     .then(response => response.json())
     .then(result => {
       if (!result.success) {
+        document.getElementById("memberNo").textContent = memberId;
         document.getElementById("memberName").textContent = "会員情報なし";
+        document.getElementById("memberType").textContent = "会員";
         document.getElementById("expiryDate").textContent = "取得失敗";
         return;
       }
 
-      const member = result.member || result.data || result;
+      const member = result.member || {};
 
       document.getElementById("memberNo").textContent =
-        member.memberNo || member.memberNumber || member.会員番号 || memberId;
+        result.memberNo || member.memberNo || member.会員番号 || memberId;
 
       document.getElementById("memberName").textContent =
-        member.name || member.memberName || member.氏名 || "会員様";
+        result.name || result.memberName || member.name || member.氏名 || "会員様";
 
       document.getElementById("memberType").textContent =
-        member.memberType || member.会員種別 || "会員";
+        result.memberType || member.memberType || member.会員種別 || "会員";
 
       document.getElementById("expiryDate").textContent =
-        formatDate(member.expiryDate || member.expiry || member.有効期限 || "確認中");
+        formatDate(result.expireDate || member.expireDate || member.有効期限 || "確認中");
     })
     .catch(error => {
       console.error(error);
+      document.getElementById("memberNo").textContent = memberId;
       document.getElementById("memberName").textContent = "会員様";
+      document.getElementById("memberType").textContent = "会員";
       document.getElementById("expiryDate").textContent = "取得失敗";
     });
 }
@@ -68,9 +72,9 @@ function formatDate(value) {
   const date = new Date(text);
   if (isNaN(date.getTime())) return text;
 
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
 
-  return `${y}/${m}/${d}`;
+  return `${year}/${month}/${day}`;
 }
