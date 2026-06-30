@@ -45,6 +45,8 @@ function loadMemberInfo() {
     document.getElementById("memberType").textContent = result.memberType || "-";
     document.getElementById("expireDate").textContent = formatDate(result.expireDate);
     document.getElementById("pointBalance").textContent = formatPoint(result.points);
+
+    setExpireColor(result.expireDate);
   })
   .catch(error => {
     console.error(error);
@@ -63,6 +65,28 @@ function formatDate(value) {
   const day = String(date.getDate()).padStart(2, "0");
 
   return `${year}/${month}/${day}`;
+}
+
+function setExpireColor(value) {
+  const box = document.getElementById("expireInline");
+  if (!box || !value) return;
+
+  const expire = new Date(value);
+  if (isNaN(expire.getTime())) return;
+
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  expire.setHours(0,0,0,0);
+
+  const diffDays = Math.ceil((expire - today) / (1000 * 60 * 60 * 24));
+
+  box.classList.remove("warning", "danger");
+
+  if (diffDays <= 7) {
+    box.classList.add("danger");
+  } else if (diffDays <= 30) {
+    box.classList.add("warning");
+  }
 }
 
 function formatPoint(value) {
