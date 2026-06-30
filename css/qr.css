@@ -1,0 +1,240 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+  background: #f4f8fd;
+  color: #001b44;
+}
+
+.app {
+  max-width: 390px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 22px 16px 90px;
+  background: linear-gradient(180deg, #ffffff 0%, #eef6ff 100%);
+  position: relative;
+}
+
+.header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.back-btn {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  border: none;
+  background: #ffffff;
+  color: #004ea8;
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  font-size: 34px;
+  line-height: 34px;
+  box-shadow: 0 8px 22px rgba(0, 43, 90, 0.08);
+}
+
+.logo-text {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 12px;
+  color: #25235c;
+  margin-left: 12px;
+}
+
+.logo-area p {
+  margin: 8px 0 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #001b44;
+}
+
+.title-section {
+  margin-bottom: 18px;
+}
+
+.title-section h1 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: 0.04em;
+}
+
+.title-section p {
+  margin: 8px 0 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #51657f;
+}
+
+.qr-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  border-radius: 30px;
+  padding: 24px 22px 26px;
+  box-shadow: 0 22px 48px rgba(0, 72, 150, 0.14);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.qr-card::before {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: rgba(0, 102, 210, 0.08);
+  right: -70px;
+  top: -70px;
+}
+
+.member-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 92px;
+  height: 38px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffb21a, #ff9d00);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 22px;
+  position: relative;
+  z-index: 1;
+}
+
+.qr-box {
+  width: 245px;
+  height: 245px;
+  margin: 0 auto 22px;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 18px;
+  box-shadow: inset 0 0 0 1px rgba(0, 47, 110, 0.08),
+              0 18px 34px rgba(0, 72, 150, 0.12);
+  position: relative;
+  z-index: 1;
+}
+
+.qr-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.member-info {
+  position: relative;
+  z-index: 1;
+}
+
+.label {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 800;
+  color: #647891;
+}
+
+.member-info h2 {
+  margin: 4px 0 10px;
+  font-size: 34px;
+  letter-spacing: 0.06em;
+  color: #0057bd;
+}
+
+.name {
+  margin: 0 0 18px;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+.limit-box {
+  height: 48px;
+  border-radius: 18px;
+  background: #f1f7ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+}
+
+.limit-box span {
+  font-size: 13px;
+  font-weight: 800;
+  color: #51657f;
+}
+
+.limit-box strong {
+  font-size: 16px;
+  color: #0a8a36;
+  letter-spacing: 0.04em;
+}
+
+.notice-card {
+  margin-top: 16px;
+  padding: 18px 20px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 12px 28px rgba(0, 72, 150, 0.08);
+}
+
+.notice-card strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.notice-card p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 700;
+  color: #415872;
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 390px;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.94);
+  border-top: 1px solid rgba(0, 48, 110, 0.08);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  backdrop-filter: blur(18px);
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: #6f7f92;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  font-weight: 800;
+}
+
+.bottom-nav span {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.bottom-nav small {
+  font-size: 10px;
+}
+
+.bottom-nav a.active {
+  color: #0068e8;
+}
