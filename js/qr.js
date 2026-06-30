@@ -11,15 +11,44 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   createQRCode(memberId);
+  loadCachedMemberInfo();
   loadMemberInfo();
 });
 
 function createQRCode(value) {
-  const qrUrl =
-    "https://api.qrserver.com/v1/create-qr-code/?size=430x430&margin=12&data=" +
-    encodeURIComponent(value);
+  const qrArea = document.getElementById("qrImage");
+  qrArea.innerHTML = "";
 
-  document.getElementById("qrImage").src = qrUrl;
+  new QRCode(qrArea, {
+    text: value,
+    width: 223,
+    height: 223,
+    colorDark: "#000000",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+}
+
+function loadCachedMemberInfo() {
+  const cache = localStorage.getItem("meteor_member_cache");
+
+  if (!cache) {
+    document.getElementById("memberNo").textContent = memberId;
+    return;
+  }
+
+  try {
+    const member = JSON.parse(cache);
+
+    document.getElementById("memberNo").textContent = member.memberNo || memberId;
+    document.getElementById("memberName").textContent = member.memberName || "会員様";
+    document.getElementById("memberType").textContent = member.memberType || "会員";
+    document.getElementById("expiryDate").textContent = formatDate(member.expireDate);
+
+    setExpiryColor(member.expireDate);
+  } catch (e) {
+    document.getElementById("memberNo").textContent = memberId;
+  }
 }
 
 function loadMemberInfo() {
@@ -32,56 +61,29 @@ function loadMemberInfo() {
   })
     .then(response => response.json())
     .then(result => {
-      if (!result.success) {
-        showFallback();
-        return;
-      }
+      if (!result.success) return;
 
       const member = result.member || {};
 
-      const memberNo =
-        result.memberNo ||
-        member.memberNo ||
-        member.会員番号 ||
-        memberId;
+      const cacheData = {
+        memberNo: result.memberNo || member.memberNo || member.会員番号 || memberId,
+        memberName: result.name || result.memberName || member.name || member.氏名 || "会員様",
+        memberType: result.memberType || member.memberType || member.会員種別 || "会員",
+        expireDate: result.expireDate || member.expireDate || member.有効期限 || ""
+      };
 
-      const memberName =
-        result.name ||
-        result.memberName ||
-        member.name ||
-        member.氏名 ||
-        "会員様";
+      localStorage.setItem("meteor_member_cache", JSON.stringify(cacheData));
 
-      const memberType =
-        result.memberType ||
-        member.memberType ||
-        member.会員種別 ||
-        "会員";
+      document.getElementById("memberNo").textContent = cacheData.memberNo;
+      document.getElementById("memberName").textContent = cacheData.memberName;
+      document.getElementById("memberType").textContent = cacheData.memberType;
+      document.getElementById("expiryDate").textContent = formatDate(cacheData.expireDate);
 
-      const expireDate =
-        result.expireDate ||
-        member.expireDate ||
-        member.有効期限 ||
-        "";
-
-      document.getElementById("memberNo").textContent = memberNo;
-      document.getElementById("memberName").textContent = memberName;
-      document.getElementById("memberType").textContent = memberType;
-      document.getElementById("expiryDate").textContent = formatDate(expireDate);
-
-      setExpiryColor(expireDate);
+      setExpiryColor(cacheData.expireDate);
     })
-    .catch(error => {
-      console.error(error);
-      showFallback();
+    .catch(() => {
+      loadCachedMemberInfo();
     });
-}
-
-function showFallback() {
-  document.getElementById("memberNo").textContent = memberId;
-  document.getElementById("memberName").textContent = "会員様";
-  document.getElementById("memberType").textContent = "会員";
-  document.getElementById("expiryDate").textContent = "取得失敗";
 }
 
 function formatDate(value) {
