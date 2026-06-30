@@ -26,7 +26,7 @@ fetch(API_URL, {
             result.memberType || "-";
 
         document.getElementById("expireDate").textContent =
-            result.expireDate || "-";
+           formatDate(result.expireDate);
 
         document.getElementById("points").textContent =
          (result.points || 0) + " pt";
@@ -49,4 +49,22 @@ function logout() {
     localStorage.removeItem("meteor_member_id");
 
     window.location.href = "index.html";
+}
+
+function formatDate(value) {
+    if (!value) {
+        return "-";
+    }
+
+    const date = new Date(value);
+
+    if (isNaN(date.getTime())) {
+        return value;
+    }
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    return `${year}/${month}/${day}`;
 }
