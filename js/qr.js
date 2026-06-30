@@ -10,17 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  setTemporaryDisplay();
   createQRCode(memberId);
   loadMemberInfo();
 });
-
-function setTemporaryDisplay() {
-  document.getElementById("memberNo").textContent = memberId;
-  document.getElementById("memberName").textContent = "読み込み中";
-  document.getElementById("memberType").textContent = "会員";
-  document.getElementById("expiryDate").textContent = "確認中";
-}
 
 function createQRCode(value) {
   const qrUrl =
@@ -30,42 +22,41 @@ function createQRCode(value) {
   document.getElementById("qrImage").src = qrUrl;
 }
 
-async function loadMemberInfo() {
-  try {
-    const url =
-      API_URL +
-      "?action=getMember" +
-      "&memberId=" +
-      encodeURIComponent(memberId) +
-      "&token=" +
-      encodeURIComponent(token);
+function loadMemberInfo() {
+  fetch(API_URL, {
+    method: "POST",
+    body: JSON.stringify({
+      action: "getMemberInfo",
+      memberId: memberId
+    })
+  })
+    .then(response => response.json())
+    .then(result => {
+      if (!result.success) {
+        document.getElementById("memberName").textContent = "会員情報なし";
+        document.getElementById("expiryDate").textContent = "取得失敗";
+        return;
+      }
 
-    const response = await fetch(url);
-    const data = await response.json();
+      const member = result.member || result.data || result;
 
-    if (!data || data.success === false) {
-      throw new Error("会員情報を取得できませんでした");
-    }
+      document.getElementById("memberNo").textContent =
+        member.memberNo || member.memberNumber || member.会員番号 || memberId;
 
-    const member = data.member || data.data || data;
+      document.getElementById("memberName").textContent =
+        member.name || member.memberName || member.氏名 || "会員様";
 
-    document.getElementById("memberNo").textContent =
-      member.memberNo || member.memberNumber || member.会員番号 || memberId;
+      document.getElementById("memberType").textContent =
+        member.memberType || member.会員種別 || "会員";
 
-    document.getElementById("memberName").textContent =
-      member.name || member.memberName || member.氏名 || "会員様";
-
-    document.getElementById("memberType").textContent =
-      member.memberType || member.会員種別 || "会員";
-
-    document.getElementById("expiryDate").textContent =
-      formatDate(member.expiryDate || member.expiry || member.有効期限 || "確認中");
-
-  } catch (error) {
-    console.error(error);
-    document.getElementById("memberName").textContent = "会員様";
-    document.getElementById("expiryDate").textContent = "取得失敗";
-  }
+      document.getElementById("expiryDate").textContent =
+        formatDate(member.expiryDate || member.expiry || member.有効期限 || "確認中");
+    })
+    .catch(error => {
+      console.error(error);
+      document.getElementById("memberName").textContent = "会員様";
+      document.getElementById("expiryDate").textContent = "取得失敗";
+    });
 }
 
 function formatDate(value) {
