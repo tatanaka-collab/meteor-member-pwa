@@ -60,7 +60,9 @@ function loadMemberInfo() {
 
 function loadHomeEvent() {
   const card = document.getElementById("homeEventCard");
-  if (!card) return;
+  const imageWrap = document.querySelector(".home-event-image-wrap");
+
+  if (!card || !imageWrap) return;
 
   fetch(`${EVENT_API_URL}?action=events`)
     .then(response => response.json())
@@ -75,15 +77,12 @@ function loadHomeEvent() {
       document.getElementById("homeEventTitle").textContent = event.title || "イベント";
       document.getElementById("homeEventDate").textContent = event.start || "日時はイベント詳細をご確認ください";
       document.getElementById("homeEventPlace").textContent = event.place || "メテオゴルフ";
-      document.getElementById("homeEventDetail").textContent = event.description || "タップして詳細を見る";
-
-      const image = document.getElementById("homeEventImage");
+      document.getElementById("homeEventDetail").textContent = "タップして詳細を見る";
 
       if (event.image) {
-        image.src = event.image;
+        imageWrap.innerHTML = `<img src="${event.image}" alt="${event.title || "イベント画像"}">`;
       } else {
-        image.removeAttribute("src");
-        image.alt = "METEO イベント";
+        imageWrap.innerHTML = `<div class="home-event-placeholder">METEO</div>`;
       }
 
       card.style.display = "block";
