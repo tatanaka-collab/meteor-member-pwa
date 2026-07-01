@@ -78,14 +78,14 @@ function loadHomeEvent() {
         event.title || "イベント";
 
       document.getElementById("homeEventDate").textContent =
-        event.start || "日時未定";
+        formatEventDateRange(event.start, event.end);
 
       document.getElementById("homeEventPlace").textContent =
         event.place || "メテオゴルフ";
 
       if (event.image) {
         imageWrap.innerHTML = `
-          <img src="${event.image}" alt="${event.title || "イベント画像"}">
+          <img src="${escapeHtml(event.image)}" alt="${escapeHtml(event.title || "イベント画像")}">
         `;
       } else {
         imageWrap.innerHTML = `
@@ -99,6 +99,35 @@ function loadHomeEvent() {
       console.error(error);
       card.style.display = "none";
     });
+}
+
+function formatEventDateRange(startValue, endValue) {
+  if (!startValue) return "日時未定";
+
+  const start = new Date(startValue);
+  const end = new Date(endValue);
+
+  if (isNaN(start.getTime())) return startValue;
+
+  const weekList = ["日", "月", "火", "水", "木", "金", "土"];
+
+  const month = start.getMonth() + 1;
+  const day = start.getDate();
+  const week = weekList[start.getDay()];
+  const startTime = formatTime(start);
+
+  if (!endValue || isNaN(end.getTime())) {
+    return `${month}/${day}(${week}) ${startTime}〜`;
+  }
+
+  const endTime = formatTime(end);
+  return `${month}/${day}(${week}) ${startTime}〜${endTime}`;
+}
+
+function formatTime(date) {
+  const hour = String(date.getHours()).padStart(2, "0");
+  const minute = String(date.getMinutes()).padStart(2, "0");
+  return `${hour}:${minute}`;
 }
 
 function setExpireDisplay(value) {
@@ -167,6 +196,15 @@ function formatDate(value) {
 function formatPoint(value) {
   const num = Number(value || 0);
   return num.toLocaleString("ja-JP");
+}
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 function goHome() {
