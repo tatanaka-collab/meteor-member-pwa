@@ -65,19 +65,37 @@
   </section>
 
   <section id="homeEventCard" class="home-event-card" onclick="goEvent()" style="display:none;">
-    <div class="home-event-image-wrap">
-      <img id="homeEventImage" src="" alt="イベント画像">
+    <div id="homeEventImageWrap" class="home-event-image-wrap">
+      <div class="home-event-placeholder">METEO EVENT</div>
     </div>
 
     <div class="home-event-body">
-      <p class="home-event-label">開催予定イベント</p>
-      <h2 id="homeEventTitle">イベント名</h2>
-      <p id="homeEventDate">日時</p>
-      <p id="homeEventPlace">場所</p>
-      <p id="homeEventDetail">詳細を見る</p>
-    </div>
+      <div class="home-event-head">
+        <p class="home-event-label">
+          <span class="material-symbols-rounded">celebration</span>
+          開催予定イベント
+        </p>
+      </div>
 
-    <span class="material-symbols-rounded arrow">chevron_right</span>
+      <h2 id="homeEventTitle">イベント名</h2>
+
+      <div class="home-event-info">
+        <p>
+          <span class="material-symbols-rounded">calendar_month</span>
+          <strong id="homeEventDate">日時</strong>
+        </p>
+
+        <p>
+          <span class="material-symbols-rounded">location_on</span>
+          <strong id="homeEventPlace">場所</strong>
+        </p>
+      </div>
+
+      <div class="home-event-more">
+        <span>詳しく見る</span>
+        <span class="material-symbols-rounded">chevron_right</span>
+      </div>
+    </div>
   </section>
 
   <section class="tip-card">

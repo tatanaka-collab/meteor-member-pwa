@@ -310,8 +310,8 @@ button{
 
 .home-event-image-wrap{
   width:100%;
-  height:96px;
-  background:linear-gradient(135deg,#0b63ce 0%,#4b97ef 100%);
+  height:90px;
+  background:linear-gradient(135deg,#06469f 0%,#0b63ce 52%,#4b97ef 100%);
   overflow:hidden;
 }
 
@@ -329,51 +329,84 @@ button{
   align-items:center;
   justify-content:center;
   color:#fff;
-  font-size:30px;
+  font-size:25px;
   font-weight:900;
-  letter-spacing:.16em;
+  letter-spacing:.14em;
 }
 
 .home-event-body{
-  padding:14px 46px 15px 16px;
+  padding:15px 16px 14px;
+}
+
+.home-event-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:8px;
 }
 
 .home-event-label{
   display:inline-flex;
   align-items:center;
-  margin-bottom:7px;
-  padding:4px 9px;
+  gap:5px;
+  padding:5px 10px;
   border-radius:999px;
   background:#fff4e9;
   color:var(--orange);
-  font-size:11px;
+  font-size:12px;
   font-weight:900;
+}
+
+.home-event-label .material-symbols-rounded{
+  font-size:16px;
 }
 
 .home-event-body h2{
-  font-size:18px;
-  line-height:1.3;
+  font-size:19px;
+  line-height:1.35;
   font-weight:900;
   color:var(--navy);
-  margin-bottom:6px;
+  margin-bottom:10px;
 }
 
-.home-event-body p{
-  font-size:13px;
-  line-height:1.45;
-  font-weight:800;
+.home-event-info{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin-bottom:12px;
+}
+
+.home-event-info p{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  font-size:14px;
+  line-height:1.4;
   color:#26374b;
 }
 
-.home-event-body #homeEventDetail{
-  display:none;
+.home-event-info .material-symbols-rounded{
+  font-size:18px;
+  color:var(--blue);
 }
 
-.home-event-card .arrow{
-  position:absolute;
-  right:15px;
-  bottom:18px;
-  font-size:26px;
+.home-event-info strong{
+  font-weight:800;
+}
+
+.home-event-more{
+  border-top:1px solid #e8eef6;
+  padding-top:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  color:var(--blue);
+  font-size:14px;
+  font-weight:900;
+}
+
+.home-event-more .material-symbols-rounded{
+  font-size:23px;
 }
 
 .tip-card{
