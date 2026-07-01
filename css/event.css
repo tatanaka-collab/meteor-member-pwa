@@ -1,0 +1,247 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background: #eef6ff;
+  color: #001b3f;
+}
+
+.app {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 28px 16px 96px;
+  background: linear-gradient(180deg, #ffffff 0%, #eef6ff 100%);
+}
+
+.page-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.back-btn {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #0068e8;
+  font-size: 28px;
+  line-height: 1;
+  box-shadow: 0 10px 24px rgba(25, 82, 150, 0.12);
+}
+
+.logo {
+  width: 190px;
+  height: auto;
+}
+
+.tagline {
+  margin: 10px 0 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.title-section {
+  margin-bottom: 18px;
+}
+
+.title-section h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+  letter-spacing: 0.02em;
+}
+
+.title-section p {
+  margin: 0;
+  font-size: 13px;
+  color: #5f6f88;
+  font-weight: 600;
+}
+
+.event-area {
+  display: grid;
+  gap: 16px;
+}
+
+.loading-card,
+.empty-card,
+.event-card,
+.more-card {
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 16px 40px rgba(25, 82, 150, 0.12);
+}
+
+.loading-card,
+.empty-card {
+  padding: 28px 20px;
+  text-align: center;
+  color: #5f6f88;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.event-card {
+  overflow: hidden;
+}
+
+.event-image-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 210px;
+  background: linear-gradient(135deg, #0b63ce, #62a7ff);
+}
+
+.event-image {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+}
+
+.event-image-placeholder {
+  height: 230px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.event-badge {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 179, 38, 0.95);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.event-body {
+  padding: 18px 18px 20px;
+}
+
+.event-date {
+  margin: 0 0 8px;
+  color: #0068e8;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.event-title {
+  margin: 0 0 10px;
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.event-text {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.75;
+  font-weight: 600;
+  color: #263a56;
+  white-space: pre-wrap;
+}
+
+.event-meta {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.event-meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #f2f7ff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.event-meta-row span:first-child {
+  color: #66758c;
+}
+
+.event-meta-row span:last-child {
+  color: #001b3f;
+  text-align: right;
+}
+
+.event-link {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #0b63ce;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.more-card {
+  padding: 16px;
+}
+
+.more-btn {
+  width: 100%;
+  border: none;
+  border-radius: 16px;
+  padding: 15px 16px;
+  background: #ffffff;
+  color: #0b63ce;
+  font-size: 14px;
+  font-weight: 900;
+  box-shadow: inset 0 0 0 1px rgba(11, 99, 206, 0.12);
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  max-width: 430px;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 8px 6px 10px;
+  background: rgba(255, 255, 255, 0.96);
+  border-top: 1px solid rgba(0, 27, 63, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.bottom-nav button {
+  border: none;
+  background: transparent;
+  color: #7b8aa1;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.bottom-nav button span {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.bottom-nav button.active {
+  color: #0068e8;
+}
