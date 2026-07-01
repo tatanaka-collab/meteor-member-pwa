@@ -10,6 +10,7 @@ if (!memberId || !token) {
 document.addEventListener("DOMContentLoaded", function () {
   setGreeting();
   loadMemberInfo();
+  loadHomeEvent();
 });
 
 function setGreeting() {
@@ -53,6 +54,49 @@ function loadMemberInfo() {
       document.getElementById("memberName").textContent = "通信エラー";
       document.getElementById("todayNews").textContent =
         "会員情報の取得に失敗しました。";
+    });
+}
+
+function loadHomeEvent() {
+  const card = document.getElementById("homeEventCard");
+  if (!card) return;
+
+  fetch(`${API_URL}?action=events`)
+    .then(response => response.json())
+    .then(result => {
+      if (!result.success || !result.events || result.events.length === 0) {
+        card.style.display = "none";
+        return;
+      }
+
+      const event = result.events[0];
+
+      document.getElementById("homeEventTitle").textContent =
+        event.title || event.eventName || "イベント";
+
+      document.getElementById("homeEventDate").textContent =
+        formatEventDate(event.startDate || event.start || event.startAt);
+
+      document.getElementById("homeEventPlace").textContent =
+        event.place || event.location || "場所：メテオゴルフ";
+
+      document.getElementById("homeEventDetail").textContent =
+        event.content || event.detail || event.memo || "タップして詳細を見る";
+
+      const image = document.getElementById("homeEventImage");
+      const imageUrl = event.image || event.imageUrl || event.thumbnail || "";
+
+      if (imageUrl) {
+        image.src = imageUrl;
+      } else {
+        image.src = "images/event-placeholder.png";
+      }
+
+      card.style.display = "block";
+    })
+    .catch(error => {
+      console.error(error);
+      card.style.display = "none";
     });
 }
 
@@ -117,6 +161,20 @@ function formatDate(value) {
   const day = String(date.getDate()).padStart(2, "0");
 
   return `${year}/${month}/${day}`;
+}
+
+function formatEventDate(value) {
+  if (!value) return "日時はイベント詳細をご確認ください";
+
+  const date = new Date(value);
+  if (isNaN(date.getTime())) return value;
+
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hour = String(date.getHours()).padStart(2, "0");
+  const minute = String(date.getMinutes()).padStart(2, "0");
+
+  return `${month}/${day} ${hour}:${minute}〜`;
 }
 
 function formatPoint(value) {

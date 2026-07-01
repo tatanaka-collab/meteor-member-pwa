@@ -298,6 +298,74 @@ button{
   color:var(--deep);
 }
 
+.home-event-card{
+  margin-top:16px;
+  border-radius:20px;
+  background:#fff;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  position:relative;
+  cursor:pointer;
+}
+
+.home-event-image-wrap{
+  width:100%;
+  height:142px;
+  background:linear-gradient(135deg,#e8f1fb,#f7fbff);
+  overflow:hidden;
+}
+
+.home-event-image-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.home-event-body{
+  padding:16px 48px 18px 18px;
+}
+
+.home-event-label{
+  display:inline-flex;
+  align-items:center;
+  margin-bottom:8px;
+  padding:5px 10px;
+  border-radius:999px;
+  background:#fff4e9;
+  color:var(--orange);
+  font-size:12px;
+  font-weight:900;
+}
+
+.home-event-body h2{
+  font-size:20px;
+  line-height:1.35;
+  font-weight:900;
+  color:var(--navy);
+  margin-bottom:8px;
+}
+
+.home-event-body p{
+  font-size:14px;
+  line-height:1.55;
+  font-weight:700;
+  color:#26374b;
+}
+
+.home-event-body #homeEventDetail{
+  margin-top:7px;
+  color:var(--blue);
+  font-weight:900;
+}
+
+.home-event-card .arrow{
+  position:absolute;
+  right:16px;
+  bottom:18px;
+  font-size:28px;
+}
+
 .tip-card{
   background:linear-gradient(135deg,#f5fff0 0%,#eefbe6 100%);
   grid-template-columns:52px 1fr 58px;
@@ -471,4 +539,6 @@ button{
   .tip-illust{display:none;}
   .quick-grid{gap:8px;}
   .quick-grid button{min-height:112px;}
+  .home-event-image-wrap{height:128px;}
+  .home-event-body h2{font-size:18px;}
 }
