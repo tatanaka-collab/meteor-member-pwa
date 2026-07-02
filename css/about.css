@@ -48,8 +48,8 @@ button{
   position:absolute;
   left:0;
   top:4px;
-  width:42px;
-  height:42px;
+  width:50px;
+  height:50px;
   border-radius:14px;
   background:#fff;
   box-shadow:0 8px 20px rgba(16,62,120,.10);
@@ -60,7 +60,11 @@ button{
 }
 
 .back-btn .material-symbols-rounded{
-  font-size:32px;
+  font-size:36px;
+}
+
+.back-btn:active{
+  transform:scale(.96);
 }
 
 .logo{
@@ -143,6 +147,7 @@ button{
   line-height:1.9;
   color:#34465a;
   font-weight:700;
+  text-align:center;
 }
 
 .about-info{
