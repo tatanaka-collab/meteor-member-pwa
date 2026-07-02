@@ -23,19 +23,25 @@ body {
   margin-bottom: 22px;
 }
 
-.back-btn {
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 50px;
-  height: 50px;
-  border: none;
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.95);
-  color: #0068e8;
-  font-size: 36px;
-  line-height: 1;
-  box-shadow: 0 10px 24px rgba(0, 64, 130, 0.12);
+.back-btn{
+  position:fixed;
+  left:calc(50% - 195px);
+  top:18px;
+
+  width:50px;
+  height:50px;
+
+  border:none;
+  border-radius:15px;
+  background:rgba(255,255,255,.95);
+
+  color:#0068e8;
+  font-size:36px;
+  line-height:1;
+
+  box-shadow:0 10px 24px rgba(0,64,130,.12);
+
+  z-index:1000;
 }
 
 .back-btn span {
@@ -306,4 +312,10 @@ body {
 
 .bottom-nav button.active {
   color: #0068e8;
+}
+
+@media(max-width:430px){
+  .back-btn{
+    left:20px;
+  }
 }
