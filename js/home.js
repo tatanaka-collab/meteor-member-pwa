@@ -143,19 +143,32 @@ function formatEventDateRange(startValue, endValue) {
 
   if (isNaN(start.getTime())) return startValue;
 
-  const weekList = ["日", "月", "火", "水", "木", "金", "土"];
-
-  const month = start.getMonth() + 1;
-  const day = start.getDate();
-  const week = weekList[start.getDay()];
-  const startTime = formatTime(start);
+  const startText = formatEventDateWithTime(start);
 
   if (!endValue || isNaN(end.getTime())) {
-    return `${month}/${day}(${week}) ${startTime}〜`;
+    return `${startText}〜`;
   }
 
-  const endTime = formatTime(end);
-  return `${month}/${day}(${week}) ${startTime}〜${endTime}`;
+  const sameDate =
+    start.getFullYear() === end.getFullYear() &&
+    start.getMonth() === end.getMonth() &&
+    start.getDate() === end.getDate();
+
+  if (sameDate) {
+    return `${startText}〜${formatTime(end)}`;
+  }
+
+  return `${startText}〜${formatEventDateWithTime(end)}`;
+}
+
+function formatEventDateWithTime(date) {
+  const weekList = ["日", "月", "火", "水", "木", "金", "土"];
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const week = weekList[date.getDay()];
+  const time = formatTime(date);
+
+  return `${month}/${day}(${week}) ${time}`;
 }
 
 function formatTime(date) {
