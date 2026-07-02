@@ -10,7 +10,7 @@ body {
 }
 
 .app {
-  max-width: 390px;
+  max-width: 430px;
   min-height: 100vh;
   margin: 0 auto;
   padding: 20px 16px 92px;
@@ -261,13 +261,14 @@ body {
   bottom: 0;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 390px;
-  height: 70px;
-  background: rgba(255, 255, 255, 0.95);
-  border-top: 1px solid rgba(0, 48, 110, 0.08);
+  max-width: 430px;
+  padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.96);
+  border-top: 1px solid rgba(220, 230, 242, 0.95);
+  backdrop-filter: blur(18px);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  backdrop-filter: blur(18px);
+  z-index: 20;
 }
 
 .bottom-nav button {
