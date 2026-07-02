@@ -56,7 +56,6 @@ function loadMemberInfo() {
 }
 
 function loadHomeNews() {
-
   const card = document.getElementById("homeNewsCard");
   const list = document.getElementById("homeNewsList");
 
@@ -65,7 +64,6 @@ function loadHomeNews() {
   fetch(`${CONTENT_API_URL}?action=news`)
     .then(response => response.json())
     .then(data => {
-
       if (!data.success || !data.news || data.news.length === 0) {
         card.style.display = "none";
         return;
@@ -76,29 +74,22 @@ function loadHomeNews() {
       list.innerHTML = "";
 
       newsList.forEach(news => {
-
         const row = document.createElement("div");
         row.className = "home-news-row";
 
         row.innerHTML = `
           <span class="home-news-title">${escapeHtml(news.title)}</span>
-          <span class="material-symbols-rounded">chevron_right</span>
         `;
 
         list.appendChild(row);
-
       });
 
       card.style.display = "grid";
-
     })
     .catch(error => {
-
       console.error(error);
       card.style.display = "none";
-
     });
-
 }
 
 function loadHomeEvent() {
@@ -132,7 +123,7 @@ function loadHomeEvent() {
         `;
       } else {
         imageWrap.innerHTML = `
-          <div class="home-event-placeholder">METEO EVENT</div>
+          <div class="home-event-placeholder">開催予定イベント</div>
         `;
       }
 

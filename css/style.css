@@ -691,3 +691,26 @@ button{
   color:var(--blue);
   opacity:.75;
 }
+
+/* ===========================
+   ホーム画面 最終調整
+=========================== */
+
+.home-news-list-card{
+  grid-template-columns:42px 1fr 26px;
+  align-items:center;
+}
+
+.home-news-list-card h2{
+  text-align:left;
+  margin-bottom:8px;
+}
+
+.home-news-row{
+  padding:8px 0;
+}
+
+.home-event-placeholder{
+  font-size:22px;
+  letter-spacing:.08em;
+}
