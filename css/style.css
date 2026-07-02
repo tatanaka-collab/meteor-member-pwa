@@ -38,7 +38,7 @@ button{
   max-width:430px;
   min-height:100vh;
   margin:0 auto;
-  padding:14px 20px 0;
+  padding: 20px 16px 92px;
   background:linear-gradient(180deg,#ffffff 0%,#f5f9fd 100%);
   position:relative;
 }
