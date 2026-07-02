@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>プライバシーポリシー | METEO</title>
+
+  <link rel="stylesheet" href="css/terms.css">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
+</head>
+
+<body>
+
+<main class="app">
+
+  <header class="page-header">
+    <button class="back-btn" onclick="goSettings()" aria-label="戻る">
+      <span class="material-symbols-rounded">chevron_left</span>
+    </button>
+
+    <img src="images/logo-horizontal.png" alt="METEO" class="logo">
+
+    <p class="copy">
+      あなたのゴルフライフを、もっと楽しく。
+    </p>
+  </header>
+
+  <section class="page-title">
+    <h1>プライバシーポリシー</h1>
+    <p>個人情報の取り扱いについてご確認いただけます。</p>
+  </section>
+
+  <section class="terms-card">
+
+    <h2>第1条（取得する情報）</h2>
+    <p>
+      当施設は、会員情報、会員番号、会員種別、有効期限、ポイント情報、
+      お問い合わせ内容など、サービス提供に必要な情報を取得・管理します。
+    </p>
+
+    <h2>第2条（利用目的）</h2>
+    <p>
+      取得した情報は、会員証の表示、会員確認、ポイント管理、
+      お知らせ・イベント情報の提供、お問い合わせ対応のために利用します。
+    </p>
+
+    <h2>第3条（第三者提供）</h2>
+    <p>
+      法令に基づく場合を除き、本人の同意なく個人情報を第三者へ提供することはありません。
+    </p>
+
+    <h2>第4条（安全管理）</h2>
+    <p>
+      当施設は、個人情報の漏えい、紛失、改ざん等を防止するため、
+      適切な安全管理に努めます。
+    </p>
+
+    <h2>第5条（外部サービス）</h2>
+    <p>
+      本アプリでは、地図表示や外部Webサイトへのリンクとして、
+      Googleマップ等の外部サービスを利用する場合があります。
+    </p>
+
+    <h2>第6条（お問い合わせ）</h2>
+    <p>
+      個人情報の取り扱いに関するお問い合わせは、
+      お問い合わせページまたは店舗までお願いいたします。
+    </p>
+
+  </section>
+
+  <div class="bottom-space"></div>
+
+  <nav class="bottom-nav">
+    <button onclick="goHome()">
+      <span class="material-symbols-rounded">home</span>
+      <small>ホーム</small>
+    </button>
+
+    <button onclick="goQR()">
+      <span class="material-symbols-rounded">qr_code_2</span>
+      <small>会員証</small>
+    </button>
+
+    <button onclick="goEvent()">
+      <span class="material-symbols-rounded">event</span>
+      <small>イベント</small>
+    </button>
+
+    <button onclick="goNews()">
+      <span class="material-symbols-rounded">campaign</span>
+      <small>お知らせ</small>
+    </button>
+
+    <button class="active" onclick="goSettings()">
+      <span class="material-symbols-rounded">menu</span>
+      <small>メニュー</small>
+    </button>
+  </nav>
+
+</main>
+
+<script src="js/terms.js"></script>
+
+</body>
+</html>

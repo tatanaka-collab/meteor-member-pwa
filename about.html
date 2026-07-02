@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>アプリについて | METEO</title>
+
+  <link rel="stylesheet" href="css/about.css">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
+</head>
+
+<body>
+<main class="app">
+
+  <header class="page-header">
+    <button class="back-btn" onclick="goSettings()" aria-label="戻る">
+      <span class="material-symbols-rounded">chevron_left</span>
+    </button>
+
+    <img src="images/logo-horizontal.png" alt="METEO" class="logo">
+    <p class="copy">あなたのゴルフライフを、もっと楽しく。</p>
+  </header>
+
+  <section class="page-title">
+    <h1>アプリについて</h1>
+    <p>METEO公式会員PWAについてご確認いただけます。</p>
+  </section>
+
+  <section class="about-card">
+    <div class="about-icon">
+      <span class="material-symbols-rounded">info</span>
+    </div>
+
+    <h2>METEO公式会員PWA</h2>
+    <p class="version">Version 1.1</p>
+
+    <div class="about-line"></div>
+
+    <p class="about-text">
+  　　METEO公式会員PWA<br><br>
+
+ 　　 Version 1.1<br><br>
+
+  　　あなたのゴルフライフを、<br>
+  　　もっと楽しく。<br><br>
+
+  　　© 2026 Neo Golf Stage METEO<br>
+  　　All Rights Reserved.
+　　</p>
+  </section>
+
+  <section class="about-info">
+    <div class="info-row">
+      <span>運営</span>
+      <strong>ネオゴルフステージ メテオ</strong>
+    </div>
+
+    <div class="info-row">
+      <span>アプリ種別</span>
+      <strong>Progressive Web App</strong>
+    </div>
+
+    <div class="info-row">
+      <span>公開バージョン</span>
+      <strong>Version 1.1</strong>
+    </div>
+  </section>
+
+  <p class="copyright">
+    © 2026 METEO SPORTS PLAZA<br>
+    All Rights Reserved.
+  </p>
+
+  <div class="bottom-space"></div>
+
+  <nav class="bottom-nav">
+    <button onclick="goHome()">
+      <span class="material-symbols-rounded">home</span>
+      <small>ホーム</small>
+    </button>
+
+    <button onclick="goQR()">
+      <span class="material-symbols-rounded">qr_code_2</span>
+      <small>会員証</small>
+    </button>
+
+    <button onclick="goEvent()">
+      <span class="material-symbols-rounded">event</span>
+      <small>イベント</small>
+    </button>
+
+    <button onclick="goNews()">
+      <span class="material-symbols-rounded">campaign</span>
+      <small>お知らせ</small>
+    </button>
+
+    <button class="active" onclick="goSettings()">
+      <span class="material-symbols-rounded">menu</span>
+      <small>メニュー</small>
+    </button>
+  </nav>
+
+</main>
+
+<script src="js/about.js"></script>
+</body>
+</html>

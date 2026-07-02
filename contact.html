@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>お問い合わせ | METEO</title>
+
+  <link rel="stylesheet" href="css/contact.css">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
+</head>
+
+<body>
+<main class="app">
+
+  <header class="page-header">
+    <button class="back-btn" onclick="goSettings()" aria-label="戻る">
+      <span class="material-symbols-rounded">chevron_left</span>
+    </button>
+
+    <img src="images/logo-horizontal.png" alt="METEO" class="logo">
+    <p class="copy">あなたのゴルフライフを、もっと楽しく。</p>
+  </header>
+
+  <section class="page-title">
+    <h1>お問い合わせ</h1>
+    <p>店舗情報・営業時間・お問い合わせ先をご確認いただけます。</p>
+  </section>
+
+  <section class="shop-card">
+    <div class="shop-icon">
+      <span class="material-symbols-rounded">storefront</span>
+    </div>
+
+    <h2>ネオゴルフステージ メテオ</h2>
+
+    <div class="info-list">
+
+      <div class="info-row">
+        <span class="material-symbols-rounded">location_on</span>
+        <p>
+          〒891-0122<br>
+          鹿児島市南栄1丁目6番1号
+        </p>
+      </div>
+
+      <div class="info-row">
+        <span class="material-symbols-rounded">schedule</span>
+        <p>
+          <strong>営業時間</strong><br>
+          月・火・水・金・土・日<br>
+          7:00〜24:00<br><br>
+          木曜日<br>
+          9:30〜24:00
+        </p>
+      </div>
+
+      <div class="info-row">
+        <span class="material-symbols-rounded">call</span>
+        <p>
+          <strong>電話番号</strong><br>
+          099-260-7111
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="action-list">
+
+    <button onclick="callShop()" class="action-btn primary">
+      <span class="material-symbols-rounded">call</span>
+      お店に電話する
+    </button>
+
+    <button onclick="openMap()" class="action-btn">
+      <span class="material-symbols-rounded">location_on</span>
+      店舗までの地図を見る
+    </button>
+
+    <button onclick="openWebsite()" class="action-btn">
+      <span class="material-symbols-rounded">language</span>
+      ホームページを見る
+    </button>
+
+  </section>
+
+  <p class="contact-message">
+    ご不明な点がございましたら、<br>
+    お気軽にお問い合わせください。
+  </p>
+
+  <div class="bottom-space"></div>
+
+  <nav class="bottom-nav">
+    <button onclick="goHome()">
+      <span class="material-symbols-rounded">home</span>
+      <small>ホーム</small>
+    </button>
+
+    <button onclick="goQR()">
+      <span class="material-symbols-rounded">qr_code_2</span>
+      <small>会員証</small>
+    </button>
+
+    <button onclick="goEvent()">
+      <span class="material-symbols-rounded">event</span>
+      <small>イベント</small>
+    </button>
+
+    <button onclick="goNews()">
+      <span class="material-symbols-rounded">campaign</span>
+      <small>お知らせ</small>
+    </button>
+
+    <button class="active" onclick="goSettings()">
+      <span class="material-symbols-rounded">menu</span>
+      <small>メニュー</small>
+    </button>
+  </nav>
+
+</main>
+
+<script src="js/contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>利用規約 | METEO</title>
+
+  <link rel="stylesheet" href="css/terms.css">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
+</head>
+
+<body>
+
+<main class="app">
+
+  <header class="page-header">
+
+    <button class="back-btn" onclick="goSettings()" aria-label="戻る">
+      <span class="material-symbols-rounded">chevron_left</span>
+    </button>
+
+    <img src="images/logo-horizontal.png" alt="METEO" class="logo">
+
+    <p class="copy">
+      あなたのゴルフライフを、もっと楽しく。
+    </p>
+
+  </header>
+
+  <section class="page-title">
+    <h1>利用規約</h1>
+    <p>METEO公式会員PWAをご利用いただく際の規約です。</p>
+  </section>
+
+  <section class="terms-card">
+
+    <h2>第1条（適用）</h2>
+    <p>
+      本規約は、ネオゴルフステージ メテオ（以下「当施設」）が提供する
+      「METEO公式会員PWA」の利用条件を定めるものです。
+    </p>
+
+    <h2>第2条（会員証について）</h2>
+    <p>
+      本アプリに表示されるQR会員証は、会員本人のみ利用できます。
+      第三者への貸与・譲渡・不正利用は禁止します。
+    </p>
+
+    <h2>第3条（ポイント・特典）</h2>
+    <p>
+      ポイント残高および会員特典は、当施設の管理データを基準とします。
+      システム反映の都合により表示が遅れる場合があります。
+    </p>
+
+    <h2>第4条（イベント・お知らせ）</h2>
+    <p>
+      イベント情報や営業時間等は変更となる場合があります。
+      最新情報は本アプリまたは当施設の案内をご確認ください。
+    </p>
+
+    <h2>第5条（禁止事項）</h2>
+    <p>
+      本アプリの不正利用、システムへの不正アクセス、
+      第三者への迷惑行為その他当施設が不適切と判断する行為を禁止します。
+    </p>
+
+    <h2>第6条（免責事項）</h2>
+    <p>
+      システム障害、通信障害等により一時的にサービスを利用できない場合があります。
+      当施設は、合理的な範囲でサービス提供に努めます。
+    </p>
+
+    <h2>第7条（規約の変更）</h2>
+    <p>
+      当施設は必要に応じて本規約を変更することがあります。
+      変更後は本アプリ掲載時点より効力を生じます。
+    </p>
+
+    <h2>第8条（お問い合わせ）</h2>
+    <p>
+      本アプリに関するお問い合わせは、
+      お問い合わせページまたは店舗までお願いいたします。
+    </p>
+
+  </section>
+
+  <div class="bottom-space"></div>
+
+  <nav class="bottom-nav">
+
+    <button onclick="goHome()">
+      <span class="material-symbols-rounded">home</span>
+      <small>ホーム</small>
+    </button>
+
+    <button onclick="goQR()">
+      <span class="material-symbols-rounded">qr_code_2</span>
+      <small>会員証</small>
+    </button>
+
+    <button onclick="goEvent()">
+      <span class="material-symbols-rounded">event</span>
+      <small>イベント</small>
+    </button>
+
+    <button onclick="goNews()">
+      <span class="material-symbols-rounded">campaign</span>
+      <small>お知らせ</small>
+    </button>
+
+    <button class="active" onclick="goSettings()">
+      <span class="material-symbols-rounded">menu</span>
+      <small>メニュー</small>
+    </button>
+
+  </nav>
+
+</main>
+
+<script src="js/terms.js"></script>
+
+</body>
+</html>

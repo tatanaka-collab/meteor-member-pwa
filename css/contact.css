@@ -1,0 +1,262 @@
+:root{
+  --blue:#0b63ce;
+  --deep:#073f9e;
+  --navy:#121f52;
+  --text:#102033;
+  --muted:#657286;
+  --shadow:0 14px 32px rgba(16,62,120,.12);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(180deg,#ffffff 0%,#eef5fc 100%);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic","Meiryo",sans-serif;
+}
+
+button{
+  border:none;
+  background:none;
+  color:inherit;
+  font-family:inherit;
+  cursor:pointer;
+}
+
+.app{
+  width:100%;
+  max-width:430px;
+  min-height:100vh;
+  margin:0 auto;
+  padding:18px 20px 0;
+  background:linear-gradient(180deg,#ffffff 0%,#f5f9fd 100%);
+}
+
+.page-header{
+  position:relative;
+  text-align:center;
+  margin-bottom:28px;
+}
+
+.back-btn{
+  position:absolute;
+  left:0;
+  top:4px;
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 8px 20px rgba(16,62,120,.10);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--blue);
+}
+
+.back-btn .material-symbols-rounded{
+  font-size:32px;
+}
+
+.logo{
+  width:230px;
+  max-width:78%;
+  display:block;
+  margin:0 auto;
+}
+
+.copy{
+  margin-top:8px;
+  color:var(--navy);
+  font-size:14px;
+  font-weight:800;
+}
+
+.page-title{
+  margin-bottom:22px;
+}
+
+.page-title h1{
+  font-size:32px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.page-title p{
+  font-size:15px;
+  color:var(--muted);
+  line-height:1.6;
+  font-weight:700;
+}
+
+.shop-card{
+  background:#fff;
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  padding:30px 22px;
+  margin-bottom:18px;
+}
+
+.shop-icon{
+  width:76px;
+  height:76px;
+  border-radius:50%;
+  background:#eaf4ff;
+  color:var(--blue);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 18px;
+}
+
+.shop-icon .material-symbols-rounded{
+  font-size:40px;
+}
+
+.shop-card h2{
+  text-align:center;
+  font-size:24px;
+  font-weight:900;
+  color:var(--navy);
+  margin-bottom:28px;
+  line-height:1.45;
+}
+
+.info-list{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+
+.info-row{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
+
+.info-row .material-symbols-rounded{
+  font-size:28px;
+  color:var(--blue);
+  margin-top:2px;
+  flex-shrink:0;
+}
+
+.info-row p{
+  font-size:16px;
+  line-height:1.75;
+  font-weight:700;
+  color:#263547;
+}
+
+.info-row strong{
+  font-weight:900;
+  color:var(--navy);
+}
+
+.action-list{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.action-btn{
+  min-height:60px;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:var(--shadow);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-size:16px;
+  font-weight:900;
+}
+
+.action-btn:active{
+  transform:scale(.98);
+}
+
+.action-btn.primary{
+  background:linear-gradient(135deg,#005fd2,#0b7cff);
+  color:#fff;
+}
+
+.action-btn .material-symbols-rounded{
+  font-size:26px;
+}
+
+.contact-message{
+  margin:24px 0 0;
+  text-align:center;
+  color:#657286;
+  font-size:14px;
+  line-height:1.8;
+  font-weight:800;
+}
+
+.bottom-space{
+  height:92px;
+}
+
+.bottom-nav{
+  position:fixed;
+  left:50%;
+  bottom:0;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:430px;
+  padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+  background:rgba(255,255,255,.96);
+  border-top:1px solid rgba(220,230,242,.95);
+  backdrop-filter:blur(18px);
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  z-index:20;
+}
+
+.bottom-nav button{
+  min-height:58px;
+  border-radius:14px;
+  color:#667386;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2px;
+}
+
+.bottom-nav .material-symbols-rounded{
+  font-size:28px;
+}
+
+.bottom-nav small{
+  font-size:11px;
+  font-weight:900;
+}
+
+.bottom-nav .active{
+  color:#006cff;
+}
+
+.bottom-nav .active .material-symbols-rounded{
+  font-variation-settings:"FILL" 1;
+}
+
+@media(max-width:380px){
+  .app{
+    padding:16px 16px 0;
+  }
+
+  .shop-card h2{
+    font-size:21px;
+  }
+
+  .info-row p{
+    font-size:15px;
+  }
+}
